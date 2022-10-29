@@ -1,9 +1,29 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
+import {
+  addItem,
+  CartItem,
+  selectCartItemById,
+} from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
 
-const PizzaBlock = ({ price, title, imageUrl, sizes, types, id }) => {
+type IPizzaBlock = {
+  price: number;
+  title: string;
+  imageUrl: string;
+  sizes: number[];
+  types: number[];
+  id: string;
+};
+
+const PizzaBlock: React.FC<IPizzaBlock> = ({
+  price,
+  title,
+  imageUrl,
+  sizes,
+  types,
+  id,
+}) => {
   const typeNames = ["тонкое", "традиционное"];
 
   const [activeType, setActiveType] = useState(0);
@@ -15,20 +35,21 @@ const PizzaBlock = ({ price, title, imageUrl, sizes, types, id }) => {
   const dispatch = useDispatch();
 
   const onClickAdd = () => {
-    const item = {
+    const item: CartItem = {
       id,
       price,
       title,
       imageUrl,
       type: typeNames[activeType],
       size: sizes[activeSize],
+      count: 0,
     };
     dispatch(addItem(item));
   };
 
   return (
     <div className="pizza-block-wrapper">
-      <div className="pizza-block">
+      <div className="container pizza-block">
         <Link to={`/pizza/${id}`}>
           <img className="pizza-block__image" src={imageUrl} alt="pizza" />
           <h4 className="pizza-block__title">
