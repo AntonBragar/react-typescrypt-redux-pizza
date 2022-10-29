@@ -1,0 +1,24 @@
+import "./scss/app.scss";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import { Outlet, Route, Routes } from "react-router-dom";
+import Cart from "./pages/Cart";
+import FullPizza from "./pages/FullPizza";
+import MainLayout from "./layouts/MainLayout";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<Home />} />
+        <Route path="pizza/:pizzaId" element={<FullPizza />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} />
+        <Route />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;
