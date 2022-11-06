@@ -4,7 +4,7 @@ import closeIcon from "../../assets/img/close-icon.svg";
 import searchIcon from "../../assets/img/search-icon.svg";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
-import { setSearchValue } from "../../redux/slices/filterSlice";
+import { setSearchValue } from "../../redux/slices/filter/slice";
 
 const Search: React.FC = () => {
   const [value, setValue] = useState("");
