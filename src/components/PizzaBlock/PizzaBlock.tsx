@@ -22,7 +22,7 @@ const PizzaBlock: React.FC<IPizzaBlock> = ({
   types,
   id,
 }) => {
-  const typeNames = ["тонкое", "традиционное"];
+  const typeNames = ["thin", "traditional"];
 
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
@@ -73,13 +73,13 @@ const PizzaBlock: React.FC<IPizzaBlock> = ({
                 onClick={() => setActiveSize(index)}
                 className={activeSize === index ? "active" : ""}
               >
-                {size} см.
+                {size} sm.
               </li>
             ))}
           </ul>
         </div>
         <div className="pizza-block__bottom">
-          <div className="pizza-block__price">от {price} ₽</div>
+          <div className="pizza-block__price">{price} CAD</div>
           <button
             onClick={onClickAdd}
             className="button button--outline button--add"
@@ -96,7 +96,7 @@ const PizzaBlock: React.FC<IPizzaBlock> = ({
                 fill="white"
               />
             </svg>
-            <span>Добавить</span>
+            <span>Buy Pizza</span>
             <i>{addedCount}</i>
           </button>
         </div>

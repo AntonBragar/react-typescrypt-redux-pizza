@@ -10,12 +10,12 @@ export type SortItem = {
 };
 
 export const sorts: SortItem[] = [
-  { name: "популярности (DESC)", sortProperty: SortPropertyEnum.RATING_DESC },
-  { name: "популярности (ASC)", sortProperty: SortPropertyEnum.RATING_ASC },
-  { name: "цене (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
-  { name: "цене (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
-  { name: "алфавиту (DESC)", sortProperty: SortPropertyEnum.TITLE_DESC },
-  { name: "алфавиту (ASC)", sortProperty: SortPropertyEnum.TITLE_ASC },
+  { name: "popularity (DESC)", sortProperty: SortPropertyEnum.RATING_DESC },
+  { name: "popularity (ASC)", sortProperty: SortPropertyEnum.RATING_ASC },
+  { name: "price (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
+  { name: "price (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
+  { name: "alphabetize (DESC)", sortProperty: SortPropertyEnum.TITLE_DESC },
+  { name: "alphabetize (ASC)", sortProperty: SortPropertyEnum.TITLE_ASC },
 ];
 
 const SortPopUp: React.FC = React.memo(() => {
@@ -61,7 +61,7 @@ const SortPopUp: React.FC = React.memo(() => {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
+        <b>Sort by:</b>
         <span onClick={() => setIsVisiblePopup(!isVisiblePopup)}>
           {sort.name}
         </span>

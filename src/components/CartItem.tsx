@@ -48,7 +48,7 @@ const CartItem: React.FC<ICartItem> = ({
       <div className="cart__item-info">
         <h3>{title}</h3>
         <p>
-          {type} тесто, {size} см.
+          {type} dough, {size} см.
         </p>
       </div>
       <div className="cart__item-count">
@@ -97,7 +97,7 @@ const CartItem: React.FC<ICartItem> = ({
         </div>
       </div>
       <div className="cart__item-price">
-        <b>{price * count} ₽</b>
+        <b>{price * count} CAD</b>
       </div>
       <div className="cart__item-remove">
         <div

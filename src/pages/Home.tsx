@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from "react";
-import qs from "qs";
 import Categories from "../components/Categories";
-import Sort, { sorts } from "../components/Sort";
+import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Pagination from "../components/Pagination/Pagination";
 import { useSelector } from "react-redux";
-import { setPage, setFilters } from "../redux/slices/filter/slice";
+import { setPage } from "../redux/slices/filter/slice";
 import { useNavigate } from "react-router-dom";
 import { fetchPizzas } from "../redux/slices/pizza/slice";
 import { useAppDispatch } from "../redux/store";
@@ -44,21 +43,6 @@ const Home: React.FC = () => {
     dispatch(setPage(number));
   };
 
-  // useEffect(() => {
-  //   const { search } = window.location;
-  //   if (search) {
-  //     const params = qs.parse(search.substring(1));
-  //     const sort = sorts.find((obj) => obj.sortProperty === params.sortBy);
-  //     dispatch(
-  //       setFilters({
-  //         ...params,
-  //         sort,
-  //       })
-  //     );
-  //     isSearch.current = true;
-  //   }
-  // }, []);
-
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -69,25 +53,11 @@ const Home: React.FC = () => {
     isSearch.current = false;
   }, [categoryId, sortType, searchValue, currentPage]);
 
-  // useEffect(() => {
-  //   if (isMounted.current) {
-  //     const queryString = qs.stringify({
-  //       categoryId,
-  //       sortType,
-  //       currentPage,
-  //     });
-  //     navigate(`?${queryString}`);
-  //   }
-  //   isMounted.current = true;
-  // }, [categoryId, sortType, currentPage]);
+  const pizzaItems = items.map((pizza: any) => (
+    <PizzaBlock key={pizza.id} {...pizza} />
+  ));
 
-  const pizzaItems = items
-    // .filter((pizza) => {
-    //   return pizza.title.toLowerCase().includes(searchValue.toLowerCase());
-    // })
-    .map((pizza: any) => <PizzaBlock key={pizza.id} {...pizza} />);
-
-  const skeletons = [...new Array(6)].map((_, index) => (
+  const skeletons = [...new Array(8)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
@@ -97,7 +67,7 @@ const Home: React.FC = () => {
         <Categories />
         <Sort />
       </div>
-      <h2 className="content__title">Все пиццы</h2>
+      <h2 className="content__title">All pizzas</h2>
       {status === "error" ? (
         <div className="content__error-info">
           <h2>Was an error 😕</h2>
@@ -107,7 +77,6 @@ const Home: React.FC = () => {
           {status === "loading" ? skeletons : pizzaItems}
         </div>
       )}
-
       <Pagination onChangePage={onChangePage} />
     </div>
   );

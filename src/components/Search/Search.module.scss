@@ -33,3 +33,9 @@
     opacity: 0.8;
   }
 }
+
+@media (max-width: 800px) {
+  .root {
+    margin-left: 150px;
+  }
+}

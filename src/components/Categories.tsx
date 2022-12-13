@@ -8,14 +8,7 @@ const Categories: React.FC = memo(() => {
   const dispatch = useDispatch();
   const categoryId = useSelector(selectCategory);
   useWhyDidYouUpdate("Categories", { categoryId });
-  const categories: string[] = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
+  const categories: string[] = ["All", "Meat", "Vegetarian", "Grill", "Hot"];
 
   const onChangeCategory = React.useCallback((index: number) => {
     dispatch(setCategoryId(index));
